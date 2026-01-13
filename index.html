@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Te Amo Marely</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #ffe6eb, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* FECHA */
+.date {
+    position: absolute;
+    top: 20px;
+    font-size: 20px;
+    color: #555;
+    letter-spacing: 2px;
+}
+
+/* CORAZÓN */
+.heart-container {
+    width: 280px;
+    animation: beat 1.3s infinite ease-in-out;
+    filter: drop-shadow(0 0 25px rgba(230,0,38,0.6));
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.08); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+.heart-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    position: absolute;
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+/* TEXTO */
+.text {
+    margin-top: 30px;
+    font-size: 38px;
+    color: #222;
+    font-weight: 500;
+    animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* PÉTALOS */
+.petal {
+    position: absolute;
+    top: -50px;
+    width: 20px;
+    height: 20px;
+    background: rgba(230,0,38,0.8);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="date">31 / 10 / 25</div>
+
+<div class="heart-wrapper">
+    <svg class="heart-container" viewBox="0 0 512 512">
+        <path d="M256 472s-36.6-32.8-75.4-68.5C110.8 341.3 48 284.7 48 198.3 48 132.7 99.7 80 165.3 80c38.7 0 75.1 18.8 96.7 48.3C283.6 98.8 320 80 358.7 80 424.3 80 476 132.7 476 198.3c0 86.4-62.8 143-132.6 205.2C292.6 439.2 256 472 256 472z"
+        fill="#e60026"/>
+    </svg>
+    <div class="name">Marely</div>
+</div>
+
+<div class="text">Te amo</div>
+
+<!-- 🎵 MÚSICA -->
+<audio autoplay loop>
+    <source src="ariana.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Generar pétalos */
+for (let i = 0; i < 25; i++) {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = 5 + Math.random() * 5 + "s";
+    petal.style.opacity = Math.random();
+    document.body.appendChild(petal);
+}
+</script>
+
+</body>
+</html>
