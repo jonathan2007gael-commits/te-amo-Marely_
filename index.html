@@ -62,13 +62,23 @@ body {
     margin-top: 30px;
     font-size: 38px;
     color: #222;
-    font-weight: 500;
-    animation: fadeIn 3s ease forwards;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* BOTÓN */
+.play-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: #e60026;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(230,0,38,0.4);
+}
+
+.play-btn:hover {
+    background: #c40020;
 }
 
 /* PÉTALOS */
@@ -106,19 +116,23 @@ body {
 
 <div class="text">Te amo</div>
 
-<!-- 🎵 MÚSICA -->
-<audio autoplay loop>
+<button class="play-btn" onclick="playMusic()">Toca aquí 💖</button>
+
+<audio id="music" loop>
     <source src="ariana.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* Generar pétalos */
+function playMusic() {
+    document.getElementById("music").play();
+}
+
+/* pétalos */
 for (let i = 0; i < 25; i++) {
     const petal = document.createElement("div");
     petal.className = "petal";
     petal.style.left = Math.random() * 100 + "vw";
     petal.style.animationDuration = 5 + Math.random() * 5 + "s";
-    petal.style.opacity = Math.random();
     document.body.appendChild(petal);
 }
 </script>
